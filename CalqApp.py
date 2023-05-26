@@ -1,3 +1,5 @@
+
+
 # make a calculator app that does all basic functions
 # this will not do anything besides basic arithmatic
 # that would take forever
@@ -9,15 +11,17 @@
 
 import tkinter as tk
 
-# Function for function button clicks
+# Function for buttons
 
 def button_click(number):
     current_text = screenLabel['text']
     screenLabel["text"] = current_text + str(number)
 
+# when C button, clear string
 def clear_screen():
     screenLabel["text"] = ""
 
+#beware! 80% sure how this function works
 def calculate_result():
     expression = screenLabel["text"]
     try:
@@ -48,7 +52,7 @@ for button_text, (row, column) in buttons.items():
     else:
         button_widget = tk.Button(window, text=button_text, width=5, command=lambda text=button_text: button_click(text))
     button_widget.grid(row = row, column = column, padx=3, pady=5, sticky="nsew")
-#buttons don't move when i expand calq app
+#buttons don't move when i expand calq app, look up command and lambda to fix?
 #need to integrate some type of auto adjust for buttons
 #this move the buttons and scree but does not change the size
 for i in range(4):
