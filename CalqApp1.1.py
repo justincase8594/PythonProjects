@@ -1,5 +1,17 @@
+# getting rid of "X" for "*" to use less code (also I feel like it would come back to haunt me if I kept it.)
+# got rid of "+/-", and the "%" for the sake of time and siplicity so I stop banging my head against the same
+# problems and move forward.
+# my partner thinks it should be green because she likes that color, so I'll make it green (challenge accepted?)
+
+
+#importing ttk for color changes (maybe style chages)
+
 import tkinter as tk
-import math
+from tkinter import ttk
+
+
+
+
 
 # Function for number button clicks
 def button_click(number):
@@ -19,6 +31,7 @@ def calculate_result(event=None):
         screenLabel["text"] = str(result)
     except Exception as e:
         screenLabel["text"] = "Error"
+
 f"""def calculate_result():
     expression = screenLabel["text"]
     try:
@@ -60,6 +73,7 @@ def eval_expression(expression):
 # Create UI window
 window = tk.Tk()
 window.title("CalQlator")
+window.configure(bg="green")
 
 # Create screen label
 screenLabel = tk.Label(window, text="", anchor="e", relief="ridge", width=30)
@@ -100,6 +114,8 @@ def perform_operation(operator):
         screenLabel["text"] = current_text + " " + operator
     elif operator:
         screenLabel["text"] = operator
+
+
 
 
 
