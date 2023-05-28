@@ -9,10 +9,6 @@
 import tkinter as tk
 from tkinter import ttk
 
-
-
-
-
 # Function for number button clicks
 def button_click(number):
     
@@ -31,14 +27,6 @@ def calculate_result(event=None):
         screenLabel["text"] = str(result)
     except Exception as e:
         screenLabel["text"] = "Error"
-
-f"""def calculate_result():
-    expression = screenLabel["text"]
-    try:
-        result = eval_expression(expression)
-        screenLabel["text"] = str(result)
-    except Exception as e:
-        screenLabel["text"] = "Error"""
 
 # Function to evaluate the expression
 def eval_expression(expression):
@@ -73,7 +61,7 @@ def eval_expression(expression):
 # Create UI window
 window = tk.Tk()
 window.title("CalQlator")
-window.configure(bg="green")
+window.configure(bg="medium spring green")
 
 # Create screen label
 screenLabel = tk.Label(window, text="", anchor="e", relief="ridge", width=30)
@@ -81,24 +69,29 @@ screenLabel.grid(row=0, column=0, columnspan=4, padx=5, pady=5, sticky="nsew")
 
 # Define button positions in a dictionary
 buttons = {
-    "C": (1, 0), "": (1, 1), "*": (1, 2), "/": (1, 3),
-    "7": (2, 0), "8": (2, 1), "9": (2, 2), "+": (2, 3),
-    "4": (3, 0), "5": (3, 1), "6": (3, 2), "-": (3, 3),
-    " ": (4, 0), "0": (4, 1), ".": (4, 2), "=": (4, 3)
+    "C": (1, 0),  "+": (1, 3),
+    "7": (2, 0), "8": (2, 1), "9": (2, 2), "-": (2, 3),
+    "4": (3, 0), "5": (3, 1), "6": (3, 2), "/": (3, 3),
+    "1": (4, 0), "2": (4, 1), "3": (4, 2), "*": (4, 3),
+    "0": (5, 1), ".": (5, 2), "=": (5, 3)
 }
 
-# Create buttons and assign functions to them
+# Create buttons and assign functions to them - also to assign color scheme
 for button_text, (row, column) in buttons.items():
     if button_text == "=":
-        button_widget = tk.Button(window, text=button_text, width=5, command=calculate_result)
+        button_widget = tk.Button(window, text=button_text, width=5, command=calculate_result, bg="orange")
     elif button_text == "C":
-        button_widget = tk.Button(window, text=button_text, width=5, command=clear_screen)
+        button_widget = tk.Button(window, text=button_text, width=5, command=clear_screen, bg="red")
     elif button_text == "/":
-        button_widget = tk.Button(window, text=button_text, width=5, command=lambda: perform_operation("/"))
+        button_widget = tk.Button(window, text=button_text, width=5, command=lambda: perform_operation("/"), bg="yellow")
     elif button_text == "*":
-        button_widget = tk.Button(window, text=button_text, width=5, command=lambda: perform_operation("*"))
+        button_widget = tk.Button(window, text=button_text, width=5, command=lambda: perform_operation("*"), bg="yellow")
+    elif button_text == "+":
+        button_widget = tk.Button(window, text=button_text, width=5, command=lambda: perform_operation("+"), bg="yellow")
+    elif button_text == "-":
+        button_widget = tk.Button(window, text=button_text, width=5, command=lambda: perform_operation("-"), bg="yellow")    
     else:
-        button_widget = tk.Button(window, text=button_text, width=5, command=lambda text=button_text: button_click(text))
+        button_widget = tk.Button(window, text=button_text, width=5, command=lambda text=button_text: button_click(text), bg="gold")
     button_widget.grid(row=row, column=column, padx=3, pady=5, sticky="nsew")
 
 # Configure column and row weights for dynamic button resizing
